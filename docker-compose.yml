@@ -1,23 +1,49 @@
-version: '2'
-
+version: '3.7'
 services:
-  mariadb:
-    image: docker.io/bitnami/mariadb:10.6
-    environment:
-      # ALLOW_EMPTY_PASSWORD is recommended only for development.
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MARIADB_USER=bn_myapp
-      - MARIADB_DATABASE=bitnami_myapp
-  myapp:
-    image: docker.io/bitnami/laravel:9
-    ports:
-      - '8000:8000'
-    environment:
-      - DB_HOST=mariadb
-      - DB_PORT=3306
-      - DB_USERNAME=bn_myapp
-      - DB_DATABASE=bitnami_myapp
+  app:
+    build:
+      args:
+        user: alejandro
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: app-php
+    container_name: app
+    restart: unless-stopped
+    working_dir: /var/www
     volumes:
-      - './my-project:/app'
-    depends_on:
-      - mariadb
+      - ./:/var/www
+    networks:
+      - web
+      -  db
+  
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - web
+
+  db:
+    image: mariadb:10.5
+    container_name: db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: recipes
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_USER: alejandro
+    networks:
+      - db   
+
+
+networks:
+  web:
+    driver: bridge
+  db:
+    driver: bridge
