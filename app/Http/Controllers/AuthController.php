@@ -34,8 +34,8 @@ class AuthController extends Controller
 
     public function login(Request $request){
         $fields = $request -> validate([
-            'email' => 'required|string|unique:users,email',
-            'password' => 'required|string|confirmed'
+            'email' => 'required|string',
+            'password' => 'required|string'
         ]);
 
         // Check email
@@ -44,7 +44,7 @@ class AuthController extends Controller
         // Check password
         if (!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
-                'message' => 'https://http.cat/401'
+                'message' => 'El email o la contraseña son erroneos, intentalo de nuevo.'
             ], 401);
         }
 
@@ -63,7 +63,7 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return [
-            'message' => 'Logged out'
+            'message' => 'Sesión cerrada.'
         ];
     }
 }

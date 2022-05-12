@@ -16,6 +16,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        // Limpiar la base de datos de token caducados hace 24 horas
+        $schedule->command('sanctum:prune-expired --hours=24')->daily();
     }
 
     /**
