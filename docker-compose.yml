@@ -34,6 +34,7 @@ services:
     container_name: db
     restart: unless-stopped
     environment:
+    ## TODO: cambiar el nombre de la db a "yqhdch"
       MYSQL_DATABASE: recipes
       MYSQL_ROOT_PASSWORD: root
       MYSQL_PASSWORD: root

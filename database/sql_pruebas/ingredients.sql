@@ -1,0 +1,23 @@
+insert into ingredients value(null, null, null, "Codillo de cerdo preasado");
+insert into ingredients value(null, null, null, "Mostaza de Dijon");
+insert into ingredients value(null, null, null, "Tomillo");
+insert into ingredients value(null, null, null, "Miel");
+
+insert into ingredients value(null, null, null, "Aceite vegetal para freír");
+insert into ingredients value(null, null, null, "Sal cucharada");
+insert into ingredients value(null, null, null, "Pimienta negra molida");
+insert into ingredients value(null, null, null, "Bicarbonato sódico");
+insert into ingredients value(null, null, null, "Ajo en polvo");
+insert into ingredients value(null, null, null, "Jengibre fresco");
+insert into ingredients value(null, null, null, "Maicena");
+insert into ingredients value(null, null, null, "Mantequilla");
+insert into ingredients value(null, null, null, "Chile rojo fresco o pimienta de cayena al gusto");
+insert into ingredients value(null, null, null, "Diente de ajo");
+insert into ingredients value(null, null, null, "Salsa Sriracha o gochujang");
+insert into ingredients value(null, null, null, "Ketchup");
+insert into ingredients value(null, null, null, "Vinagre de arroz");
+insert into ingredients value(null, null, null, "Salsa de soja");
+insert into ingredients value(null, null, null, "Azúcar moreno");
+insert into ingredients value(null, null, null, "Cacahuetes");
+insert into ingredients value(null, null, null, "Cebollino o ajete");
+insert into ingredients value(null, null, null, "Semillas de sésamo");
