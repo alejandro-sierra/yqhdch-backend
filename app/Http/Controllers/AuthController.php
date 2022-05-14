@@ -66,4 +66,15 @@ class AuthController extends Controller
             'message' => 'Sesión cerrada.'
         ];
     }
+    
+    public function me(Request $request)
+    {
+        $response = [
+            'name' => $request->user()->name,
+            'email' => $request->user()->email,
+
+        ];
+
+        return $response;
+    }
 }
