@@ -8,12 +8,12 @@
 </head>
 <body>
     <h1>Pruebas</h1>
-    {{-- {{$recipe->users}} --}}
-    {{-- {{$recipe->ingredients}} --}}
+    {{$recipe->users}}
+    <br><br>
     {{$recipe->ingredients}}
-
+    <br><br>
     @foreach ($recipe->ingredients as $ingredient)
-        {{$ingredient}}<br>
+    {{$ingredient}}<br>
     @endforeach
 </body>
 </html>
