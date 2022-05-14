@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             
+            $table->bigInteger('recipe_id');
+            $table->bigInteger('user_id');
+
             // status(bloqueado, favorito, null)
             $table->string('status');
         });

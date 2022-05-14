@@ -10,6 +10,10 @@
     <h1>Pruebas</h1>
     {{-- {{$recipe->users}} --}}
     {{-- {{$recipe->ingredients}} --}}
-    {{$recipe}}
+    {{$recipe->ingredients}}
+
+    @foreach ($recipe->ingredients as $ingredient)
+        {{$ingredient}}<br>
+    @endforeach
 </body>
 </html>
