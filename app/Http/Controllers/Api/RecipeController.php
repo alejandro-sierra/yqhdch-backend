@@ -8,62 +8,50 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    public function getAll()
+    public function recipes()
     {
         return Recipe::all();
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function recipeRandom()
     {
-        //
+        // TODO: Revisar como hacer el random
+        /*
+        $recipe = Recipe::all("id");
+        
+        $recipeRandom = rand(min($recipe), max($recipe));
+        
+        $recipe = Recipe::find($recipeRandom);
+        */
+
+        $recipe = Recipe::find(1);
+
+        $arrayIngredient = [];
+
+        foreach ($recipe->ingredients as $ingredient) {
+            $arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
+        }
+        
+        $response = [
+            "id" => $recipe->id,
+            "title" => $recipe->title,
+            "preparation" => $recipe->preparation,
+            "difficulty" => $recipe->difficulty,
+            "preparation_time" => $recipe->preparation_time,
+            "diet" => $recipe->diet,
+            "ingredient" => $arrayIngredient
+        ];
+        
+        return $response;
     }
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
         //
     }

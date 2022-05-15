@@ -8,12 +8,15 @@
 </head>
 <body>
     <h1>Pruebas</h1>
+    {{-- <h2>Recipe - User</h2>
     {{$recipe->users}}
-    <br><br>
-    {{$recipe->ingredients}}
-    <br><br>
+    <br><br> --}}
+    <h2>Recipe</h2>
+    {{$recipe}}
+    <br><br> 
+    <h2>Recipe - Ingredients</h2>
     @foreach ($recipe->ingredients as $ingredient)
-    {{$ingredient}}<br>
+    <p>{{$ingredient->name}}: {{$ingredient->pivot->quantity}}</p><br>
     @endforeach
 </body>
 </html>

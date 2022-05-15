@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 const BASE_ROUTE_RECIPE = "/recipes";
-const GETALL_RECIPE = "";
+const GETALL_RECIPES = BASE_ROUTE_RECIPE . "";
 
 
 // Public routes
@@ -14,7 +14,10 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 
-Route::get(BASE_ROUTE_RECIPE . GETALL_RECIPE, [RecipeController::class, 'getAll'])->name('getAllRecipes');
+Route::get(GETALL_RECIPES, [RecipeController::class, 'recipes'])->name('recipes');
+
+
+Route::get('/recipeRandom', [RecipeController::class, 'recipeRandom'])->name('recipeRandom');
 
 
 // Protected routes
