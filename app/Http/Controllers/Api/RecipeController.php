@@ -14,28 +14,17 @@ class RecipeController extends Controller
         return Recipe::all();
     }
     
+    // public function recipe($preparation_time, $difficulty, $diet, $ingredients)
     public function recipe()
     {
-        // TODO: Revisar como hacer el random
-        /*
-        $recipe = Recipe::all("id");
-        
-        $recipeRandom = rand(min($recipe), max($recipe));
-        
-        $recipe = Recipe::find($recipeRandom);
-
-        public function random()
-        {
-            return Chollo::inRandomOrder()->limit(1)->get();
-        }
-        */
-
-        $recipe = Recipe::find(1);
+        $query = Recipe::inRandomOrder()->limit(1)->where("preparation_time", "=", 30)->where("difficulty", "=", "media")->get();
 
         $arrayIngredient = [];
 
-        foreach ($recipe->ingredients as $ingredient) {
-            $arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
+        foreach ($query as $recipe) {
+            foreach ($recipe->ingredients as $ingredient) {
+                $arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
+            }
         }
         
         $response = [
@@ -81,6 +70,8 @@ class RecipeController extends Controller
         $response = [
             'recipe' => $recipe,
         ];
+
+        // FIXME: Se puede añadir la receta, ahora hay que añadir los incredientes y relacionarlos
 
         return response($recipe, 201);
     }
