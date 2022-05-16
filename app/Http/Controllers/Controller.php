@@ -16,8 +16,9 @@ class Controller extends BaseController
     public function pruebas()
     {
         $user = User::find(1);
+        $user2 = User::find(2);
         $recipe = Recipe::find(1);
 
-        return view('pruebas', compact('user', 'recipe'));
+        return view('pruebas', compact('user', 'user2', 'recipe'));
     }
 }

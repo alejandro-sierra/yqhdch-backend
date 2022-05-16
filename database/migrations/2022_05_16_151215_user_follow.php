@@ -11,6 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
+    // FIXME: Revisar la relacion recursiva, no funciona correctamente
     public function up()
     {
         Schema::create('user_follow', function (Blueprint $table) {
