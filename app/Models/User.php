@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rol',
     ];
 
     /**
@@ -45,5 +46,20 @@ class User extends Authenticatable
     public function recipes()
     {
         return $this->belongsToMany(Recipe::class)->withPivot('status');
+    }
+    
+    public function comments()
+    {
+        return $this -> hasMany(Comment::class);
+    }
+    
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_follow');
+    }
+    
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'user_follow');
     }
 }

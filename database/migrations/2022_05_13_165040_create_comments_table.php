@@ -19,6 +19,8 @@ return new class extends Migration
             
             $table->bigInteger('user_id');
             $table->bigInteger('recipe_id');
+
+            $table->string('content');
         });
     }
 

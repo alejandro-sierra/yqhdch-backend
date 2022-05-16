@@ -20,4 +20,9 @@ class Recipe extends Model
     {
         return $this->belongsToMany(Ingredient::class)->withPivot('quantity');
     }
+   
+    public function comments()
+    {
+        return $this -> hasMany(Comment::class);
+    }
 }
