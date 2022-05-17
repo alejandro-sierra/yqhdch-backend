@@ -2,9 +2,6 @@ version: '3.7'
 services:
   app:
     build:
-      args:
-        user: alejandro
-        uid: 1000
       context: ./
       dockerfile: Dockerfile
     image: app-php
@@ -34,15 +31,15 @@ services:
     container_name: db
     restart: unless-stopped
     environment:
-    ## TODO: cambiar el nombre de la db a "yqhdch"
-      MYSQL_DATABASE: recipes
+      MYSQL_DATABASE: yqhdch
       MYSQL_ROOT_PASSWORD: root
       MYSQL_PASSWORD: root
       MYSQL_USER: alejandro
+      MARIADB_CHARACTER_SET_SERVER: utf8mb4
+      MARIADB_COLLATION_SERVER: utf8mb4_unicode_ci
     networks:
       - db   
-
-
+      
 networks:
   web:
     driver: bridge
