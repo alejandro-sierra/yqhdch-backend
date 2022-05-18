@@ -15,9 +15,10 @@ class RecipeController extends Controller
     }
     
     // public function recipe($preparation_time, $difficulty, $diet, $ingredients)
-    public function recipe()
+    public function recipe($time, $difficulty)
     {
-        $query = Recipe::inRandomOrder()->limit(1)->where("preparation_time", "=", 30)->where("difficulty", "=", "media")->get();
+        // TODO: Gestionar el error 500 para que salga un mensaje
+        $query = Recipe::inRandomOrder()->limit(1)->where("preparation_time", "=", $time)->where("difficulty", "=", $difficulty)->get();
 
         $arrayIngredient = [];
 
@@ -34,6 +35,7 @@ class RecipeController extends Controller
             "difficulty" => $recipe->difficulty,
             "preparation_time" => $recipe->preparation_time,
             "diet" => $recipe->diet,
+            "url_image" => $recipe->url_image,
             "ingredient" => $arrayIngredient
         ];
         
@@ -55,6 +57,7 @@ class RecipeController extends Controller
             'difficulty' => 'required|string',
             'preparation_time' => 'required|integer',
             'diet' => 'required|string',
+            'url_image' => 'required|string',
         ]);
 
         $recipe = new Recipe();
@@ -64,6 +67,7 @@ class RecipeController extends Controller
         $recipe->difficulty = $request->difficulty;
         $recipe->preparation_time = $request->preparation_time;
         $recipe->diet = $request->diet;
+        $recipe->url_image = $request->url_image;
         
         $recipe->save();
 

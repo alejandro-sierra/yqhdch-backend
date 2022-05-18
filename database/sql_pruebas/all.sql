@@ -22,8 +22,18 @@ insert into ingredients value(null, "Cacahuetes");
 insert into ingredients value(null, "Cebollino o ajete");
 insert into ingredients value(null, "Semillas de sésamo");
 
+insert into ingredients value(null, "Champiñones");
+insert into ingredients value(null, "Cebolla");
+insert into ingredients value(null, "Almogrote");
+insert into ingredients value(null, "Aceite de oliva");
+insert into ingredients value(null, "Sal");
+insert into ingredients value(null, "Pimienta negra molida");
+insert into ingredients value(null, "Harina de trigo");
+insert into ingredients value(null, "Huevo");
+insert into ingredients value(null, "Pan rallado");
 
-insert into recipes value(null, null, null, 
+
+insert into recipes value(null, current_time(), current_time(), 
 "Receta exprés de codillo de cerdo al horno en salsa de miel y mostaza",
 
 "Sacamos los codillos de cerdo preasados de su envase y los colocamos en una fuente apta para hornear. 
@@ -34,9 +44,9 @@ con la ventilación activada. En ese tiempo se calentarán perfectamente y su ex
 con la salsa y los jugos que vayan soltando para que la parte exterior tome más brillo. A mitad de la cocción, damos la vuelta para que se dore también el otro lado.",
 
 
-"media", 30, "estandar");
+"media", 30, "estandar", "https://i.blogs.es/c76257/codillo-miel-y-mostaza-pure-pakus-futurobloguero-dap/1366_2000.jpg");
 
-insert into recipes value(null, null, null, 
+insert into recipes value(null, current_time(), current_time(), 
 "Alitas de pollo fritas al estilo coreano: una receta picante y dulce para chuparse los dedos",
 
 "En esta receta vamos a pasar las alitas por una doble fritura. En una olla profunda calienta aceite vegetal abundante a fuego medio-alto, hasta alcanzar los 135º C. 
@@ -53,39 +63,61 @@ mucho más fácil de encontrar. Echamos dos o tres cucharadas de esta salsa pica
 Agrega entonces dos o tres cucharadas de miel y dos de azúcar moreno y continúe cocinando hasta que burbujee y espese un poco. Vierta la salsa sobre las alas y revuelva hasta 
 que esté cubierta de manera uniforme. Agregue cacahuetes, semillas de sésamo y cebollino o ajetes a las alitas antes de servir. ",
 
-"media", 90, "estandar");
+"media", 90, "estandar" ,"https://i.blogs.es/0cb42b/alitas_picantes.jpg/1366_2000.jpg");
+
+insert into recipes value(null, current_time(), current_time(), 
+"Champiñones rellenos de almogrote, receta para un picoteo del finde con aires canarios",
+
+"Pelamos y picamos la cebolla. Calentamos un poco de aceite en una sartén y la pochamos durante unos minutos, hasta que esté transparente. Mientras tanto separamos los pies de los sombreros de los champiñones y picamos los primeros.
+Cuando la cebolla esté tierna los añadimos a la sartén y rehogamos unos minutos. Agregamos el almogrote y una cucharada de pan rallado. Sofreímos hasta que el pan haya absorbido el aceite y no queden restos de grasa en la sartén.
+Rellenamos los champiñones y los pasamos por harina, huevo batido y pan rallado. Calentamos abundante aceite en un cacito y freímos los champiñones rellenos a fuego alto hasta que estén dorados. Escurrimos bien y servimos inmediatamente.",
+
+"facil", 40, "vegetariano" ,"https://i.blogs.es/fadf21/champinones-rellenos-de-almogrote/1366_2000.jpg");
 
 
-insert into ingredient_recipe value(null, null, null, 1, 1, "2");
-insert into ingredient_recipe value(null, null, null, 1, 2, "2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 1, 3, "2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 1, 4, "");
+insert into ingredient_recipe value(null, current_time(),current_time(), 1, 1, "2");
+insert into ingredient_recipe value(null, current_time(),current_time(), 1, 2, "2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 1, 3, "2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 1, 4, "");
 
-insert into ingredient_recipe value(null, null, null, 2, 4, "");
-insert into ingredient_recipe value(null, null, null, 2, 5, "1 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 6, "1/2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 7, "1/2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 8, "1/2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 9, "2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 10, "80 gr");
-insert into ingredient_recipe value(null, null, null, 2, 11, "3 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 12, "");
-insert into ingredient_recipe value(null, null, null, 2, 13, "1 diente");
-insert into ingredient_recipe value(null, null, null, 2, 14, "2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 15, "2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 16, "1cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 17, "1 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 18, "2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 19, "2 cucharadas");
-insert into ingredient_recipe value(null, null, null, 2, 20, "");
-insert into ingredient_recipe value(null, null, null, 2, 21, "");
-insert into ingredient_recipe value(null, null, null, 2, 22, "");
-
-
-insert into recipe_user value(null, null, null, 1, 1, "block");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 4, "");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 5, "1 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 6, "1/2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 7, "1/2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 8, "1/2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 9, "2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 10, "80 gr");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 11, "3 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 12, "");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 13, "1 diente");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 14, "2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 15, "2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 16, "1cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 17, "1 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 18, "2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 19, "2 cucharadas");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 20, "");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 21, "");
+insert into ingredient_recipe value(null, current_time(),current_time(), 2, 22, "");
 
 
-insert into comments value(null, null, null, 1, 1, "La receta es maravillosa");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 23, "12");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 24, "1");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 25, "2-3 cucharadas");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 26, "");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 27, "");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 28, "");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 29, "2 cucharadas");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 30, "1");
+insert into ingredient_recipe value(null, current_time(), current_time(), 3, 31, "");
 
 
-insert into user_follow value(null, null, null, 2, 1);
+
+
+insert into recipe_user value(null, current_time(), current_time(), 1, 1, "block");
+
+
+insert into comments value(null, current_time(), current_time(), 1, 1, "La receta es maravillosa");
+
+
+insert into user_follow value(null, current_time(), current_time(), 2, 1);

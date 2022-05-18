@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('difficulty');
             $table->integer('preparation_time');
             $table->string('diet');
+            $table->string('url_image');
         });
     }
 
