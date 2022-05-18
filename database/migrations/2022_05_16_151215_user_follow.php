@@ -18,8 +18,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             
-            $table->bigInteger('user_id');
-            $table->bigInteger('follow_id');
+            $table->bigInteger('follower_id');
+            $table->bigInteger('following_id');
         });
     }
 

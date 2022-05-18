@@ -9,6 +9,10 @@
 <body>
     <h1>Pruebas</h1>
 
+    <h2>Recipe</h2>
+    <p>{{$recipe}}</p>
+    <br><br> 
+
     <h2>Recipe - User</h2>
     {{$recipe->users}}
     <br><br> 
