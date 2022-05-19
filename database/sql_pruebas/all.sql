@@ -100,7 +100,6 @@ insert into ingredient_recipe value(null, current_time(),current_time(), 2, 20, 
 insert into ingredient_recipe value(null, current_time(),current_time(), 2, 21, "");
 insert into ingredient_recipe value(null, current_time(),current_time(), 2, 22, "");
 
-
 insert into ingredient_recipe value(null, current_time(), current_time(), 3, 23, "12");
 insert into ingredient_recipe value(null, current_time(), current_time(), 3, 24, "1");
 insert into ingredient_recipe value(null, current_time(), current_time(), 3, 25, "2-3 cucharadas");

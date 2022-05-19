@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
-use RoachPHP\Shell\Repl;
 
 class RecipeController extends Controller
 {
@@ -14,18 +13,23 @@ class RecipeController extends Controller
         return Recipe::all();
     }
     
-    // public function recipe($preparation_time, $difficulty, $diet, $ingredients)
-    public function recipe($time, $difficulty)
+    public function recipe($time=30, $difficulty="facil", $diet="estandar", $ingredient="")
     {
-        // TODO: Gestionar el error 500 para que salga un mensaje
-        $query = Recipe::inRandomOrder()->limit(1)->where("preparation_time", "=", $time)->where("difficulty", "=", $difficulty)->get();
-
+        // TODO: Mirar las query a tablas pivote
+        // https://stackoverflow.com/questions/50645723/laravel-eloquent-querying-pivot-table
+        $query = Recipe::inRandomOrder()->limit(1)->where("preparation_time", "<=", $time)
+        ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->wherePivot("ingredient", "!=", $ingredient)->get();
+        
         $arrayIngredient = [];
-
-        foreach ($query as $recipe) {
-            foreach ($recipe->ingredients as $ingredient) {
-                $arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
+        
+        if (count($query)) {
+            foreach ($query as $recipe) {
+                foreach ($recipe->ingredients as $ingredient) {
+                    $arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
+                }
             }
+        }else{
+            return response()->json(["error" => "No hemos podido encontrado una recetas con tus especificaciones."], 202);
         }
         
         $response = [
