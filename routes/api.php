@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 // Constants routes
 const BASE_ROUTE_RECIPE = "/recipes";
-const GET_RECIPE_RANDOM = "/recipe/{time?}/{difficulty?}/{diet?}/{ingredient?}";
+const GET_RECIPE_RANDOM = "/recipe/{number?}/{time?}/{difficulty?}/{diet?}";
 
 const GETALL = BASE_ROUTE_RECIPE . "";
 const CREATE = BASE_ROUTE_RECIPE . "/create";

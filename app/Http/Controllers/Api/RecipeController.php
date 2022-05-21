@@ -13,12 +13,12 @@ class RecipeController extends Controller
         return Recipe::all();
     }
     
-    public function recipe($time=30, $difficulty="facil", $diet="estandar", $ingredient="")
+    public function recipe($number=1, $time=30, $difficulty="facil", $diet="vegetariano")
     {
         // TODO: Mirar las query a tablas pivote
         // https://stackoverflow.com/questions/50645723/laravel-eloquent-querying-pivot-table
-        $query = Recipe::inRandomOrder()->limit(1)->where("preparation_time", "<=", $time)
-        ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->wherePivot("ingredients", "!=", $ingredient)->get();
+        $query = Recipe::inRandomOrder()->limit($number)->where("preparation_time", "<=", $time)
+        ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->get();
         
         $arrayIngredient = [];
         
