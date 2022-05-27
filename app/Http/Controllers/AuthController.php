@@ -69,12 +69,6 @@ class AuthController extends Controller
     
     public function me(Request $request)
     {
-        $response = [
-            'name' => $request->user()->name,
-            'email' => $request->user()->email,
-
-        ];
-
-        return $response;
+        return $request->user();
     }
 }

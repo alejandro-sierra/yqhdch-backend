@@ -12,26 +12,26 @@ class RecipeController extends Controller
     {
         return Recipe::all();
     }
-    
-    public function recipe($number=1, $time=30, $difficulty="facil", $diet="vegetariano")
+
+    public function recipe($number = 1, $time = 30, $difficulty = "facil", $diet = "vegetariano")
     {
         // TODO: Mirar las query a tablas pivote
         // https://stackoverflow.com/questions/50645723/laravel-eloquent-querying-pivot-table
         $query = Recipe::inRandomOrder()->limit($number)->where("preparation_time", "<=", $time)
-        ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->get();
-        
+            ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->get();
+
         $arrayIngredient = [];
-        
+
         if (count($query)) {
             foreach ($query as $recipe) {
                 foreach ($recipe->ingredients as $ingredient) {
                     $arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
                 }
             }
-        }else{
+        } else {
             return response()->json(["error" => "No hemos podido encontrado una recetas con tus especificaciones."], 202);
         }
-        
+
         $response = [
             "id" => $recipe->id,
             "title" => $recipe->title,
@@ -42,20 +42,20 @@ class RecipeController extends Controller
             "url_image" => $recipe->url_image,
             "ingredient" => $arrayIngredient
         ];
-        
+
         return $response;
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
+
     public function create(Request $request)
     {
-        $request -> validate([
+        $request->validate([
             'title' => 'required|string',
             'preparation' => 'required|string',
             'difficulty' => 'required|string',
@@ -72,7 +72,7 @@ class RecipeController extends Controller
         $recipe->preparation_time = $request->preparation_time;
         $recipe->diet = $request->diet;
         $recipe->url_image = $request->url_image;
-        
+
         $recipe->save();
 
         $response = [
@@ -88,13 +88,56 @@ class RecipeController extends Controller
     public function delete($id)
     {
         $recipe = Recipe::find($id);
-        if(!$recipe){
-            return response()->json(['error' => 'Receta no encontrado'], 404);
-        }else{
-            $recipe -> delete();
+        if (!$recipe) {
+            return response()->json(['error' => 'Receta no encontrada'], 404);
+        } else {
+            $recipe->delete();
             return response()->json(['content' => 'Chollo eliminado correctamente'], 200);
         }
     }
+
+    public function getPreparationTimes()
+    {
+        $arrayTimes = [];
+
+        $times = Recipe::distinct()->get(['preparation_time']);
+        foreach ($times as $time) {
+            $arrayTimes[] = $time->preparation_time;
+        }
+        if (!$times) {
+            return response()->json(['error' => 'Receta no encontrada'], 404);
+        }
+        return response($arrayTimes, 200);
+    }
+
+    public function getDiets()
+    {
+        $arrayDiets = [];
+
+        $diets = Recipe::distinct()->get(['diet']);
+        foreach ($diets as $diet) {
+            $arrayDiets[] = $diet->diet;
+        }
+        if (!$diets) {
+            return response()->json(['error' => 'Receta no encontrada'], 404);
+        }
+        return response($arrayDiets, 200);
+    }
+
+    public function getDifficulties()
+    {
+        $arrayDifficulties = [];
+
+        $difficulties = Recipe::distinct()->get(['difficulty']);
+        foreach ($difficulties as $difficulty) {
+            $arrayDifficulties[] = $difficulty->difficulty;
+        }
+        if (!$difficulties) {
+            return response()->json(['error' => 'Receta no encontrada'], 404);
+        }
+        return response($arrayDifficulties, 200);
+    }
+
 }
 
 
