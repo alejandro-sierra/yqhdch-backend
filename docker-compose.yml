@@ -32,8 +32,8 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: yqhdch
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 63Ft%<B\SRLM(t%/
+      MYSQL_PASSWORD: 63Ft%<B\SRLM(t%/
       MYSQL_USER: alejandro
       MARIADB_CHARACTER_SET_SERVER: utf8mb4
       MARIADB_COLLATION_SERVER: utf8mb4_unicode_ci
