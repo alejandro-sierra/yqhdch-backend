@@ -13,36 +13,35 @@ class RecipeController extends Controller
         return Recipe::all();
     }
 
-    public function recipe($number = 1, $time = 30, $difficulty = "facil", $diet = "vegetariano")
+    public function recipe($number,$time, $difficulty, $diet)
     {
-        // TODO: Mirar las query a tablas pivote
-        // https://stackoverflow.com/questions/50645723/laravel-eloquent-querying-pivot-table
-        $query = Recipe::inRandomOrder()->limit($number)->where("preparation_time", "<=", $time)
-            ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->get();
+        $query = Recipe::inRandomOrder()->where("preparation_time", "<=", $time)
+            ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->limit($number)->get();
 
-        $arrayIngredient = [];
-
-        if (count($query)) {
-            foreach ($query as $recipe) {
-                foreach ($recipe->ingredients as $ingredient) {
+            $arrayIngredient = [];
+            
+            if (count($query)) {
+                foreach ($query as $recipe) {
+                    foreach ($recipe->ingredients as $ingredient) {
                     $arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
                 }
+                $response[] = [
+                    "id" => $recipe->id,
+                    "title" => $recipe->title,
+                    "preparation" => $recipe->preparation,
+                    "difficulty" => $recipe->difficulty,
+                    "preparation_time" => $recipe->preparation_time,
+                    "diet" => $recipe->diet,
+                    "url_image" => $recipe->url_image,
+                    "ingredient" => $arrayIngredient
+                ];
             }
-        } else {
-            return response()->json(["error" => "No hemos podido encontrado una recetas con tus especificaciones."], 202);
         }
-
-        $response = [
-            "id" => $recipe->id,
-            "title" => $recipe->title,
-            "preparation" => $recipe->preparation,
-            "difficulty" => $recipe->difficulty,
-            "preparation_time" => $recipe->preparation_time,
-            "diet" => $recipe->diet,
-            "url_image" => $recipe->url_image,
-            "ingredient" => $arrayIngredient
-        ];
-
+        
+        // else {
+        //     return response()->json(["error" => "No hemos podido encontrado una recetas con tus especificaciones."], 202);
+        // }
+        
         return $response;
     }
 
@@ -137,7 +136,6 @@ class RecipeController extends Controller
         }
         return response($arrayDifficulties, 200);
     }
-
 }
 
 
