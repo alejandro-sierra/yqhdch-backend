@@ -35,8 +35,8 @@ class RecipeController extends Controller
                     "url_image" => $recipe->url_image,
                     "ingredient" => $arrayIngredient
                 ];
-                return $response;
             }
+            return $response;
         }else {
             return response()->json(["error" => "No hemos podido encontrado una recetas con tus especificaciones."], 202);
         }
