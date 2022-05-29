@@ -24,6 +24,8 @@ Route::get(GETALL_RECIPES, [RecipeController::class, 'recipes'])->name('recipes'
 Route::get(GET_PREPARATION_TIMES, [RecipeController::class, 'getPreparationTimes'])->name('getPreparationTimes');
 Route::get(GET_DIET, [RecipeController::class, 'getDiets'])->name('getDiets');
 Route::get(GET_DIFFICULTY, [RecipeController::class, 'getDifficulties'])->name('getDifficulties');
+Route::post(CREATE_RECIPE, [RecipeController::class, 'create'])->name('create');
+
 
 // [ AUTH ]
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -34,7 +36,6 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 // *** PROTECTED ROUTES ***
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // [ RECIPES ]
-    Route::post(CREATE_RECIPE, [RecipeController::class, 'create'])->name('create');
     Route::delete(DELETE_RECIPE, [RecipeController::class, 'delete'])->name('delete');
 
     // [ AUTH ]

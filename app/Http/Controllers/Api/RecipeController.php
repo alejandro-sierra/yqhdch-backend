@@ -15,6 +15,7 @@ class RecipeController extends Controller
 
     public function recipe($number,$time, $difficulty, $diet)
     {
+        // FIXME: cambiar cuando tenga más recetas <= de preparation_time por un =
         $query = Recipe::inRandomOrder()->where("preparation_time", "<=", $time)
             ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->limit($number)->get();
 
@@ -138,10 +139,11 @@ class RecipeController extends Controller
 
 // [
 //     {
-//         "tile": "Ponche segoviano, receta de uno de los pasteles tradicionales más suaves y delicados ",
+//         "tile": "Ponche segoviano, receta de uno de los pasteles tradicionales más suaves y delicado",
 //         "preparation": "Comenzaremos el día anterior preparando el mazapán. Para ello mezclamos la harina de almendra, el azúcar y el azúcar invertido, removemos. Añadimos el agua y mezclamos hasta que adquiera una textura manejable. Envolvemos en papel film y dejamos reposar 12 horas en la nevera. Para el bizcocho, precalentamos el horno a 180º y forramos una bandeja con papel de horno. En un bol, batimos las yemas y la mitad del azúcar con unas varillas eléctricas durante unos 10 minutos o hasta que la mezcla blanquee y triplique su volumen. Añadimos las harinas tamizadas y la por último la leche, removemos hasta que no queden grumos. Por otra parte, y también con unas varillas batimos las claras hasta formar un merengue con el resto del azúcar, mezclamos a la mezcla anterior suavemente con movimientos envolventes. Pasamos la mezcla a la bandeja de horno y extendemos para igualar por todos lados. Horneamos unos 12 minutos y cuando esté listo dejamos enfriar. Después cortamos los bordes para igualar el bizcocho y lo cortamos en tres partes iguales. Reservamos hasta el montaje. Para el almíbar, mezclamos el agua y el azúcar hasta que llegue a hervir. Reservamos hasta que enfríe. Para la yema pastelera. En un bol mezclamos el azúcar con la Maicena. Añadimos los huevos bien batidos colándolos por un colador, y hacemos con esto una papilla. Ponemos un cazo al fuego con el agua, cuando esta llegue a 40 grados centígrados, añadimos la papilla anterior al agua caliente y sin dejar de remover con unas varillas cocinamos hasta que espese, unos 7 minutos más o menos. Retiramos del fuego, y tapamos a piel con un fim de cocina . Reservamos hasta que enfríe. ",
 //         "difficulty": "media",
 //         "preparation_time": 120,
 //         "diet": "vegetariano"
+//         "url_image": "https://i.blogs.es/0c138a/ponche-segoviano0/1366_2000.jpg"
 //     }
 // ]
