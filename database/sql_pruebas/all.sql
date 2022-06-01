@@ -34,7 +34,7 @@ insert into ingredients value(null, "Pan rallado");
 
 
 insert into recipes value(null, current_time(), current_time(), 
-"Receta exprés de codillo de cerdo al horno en salsa de miel y mostaza",
+"Codillo de cerdo al horno en salsa de miel y mostaza",
 
 "Sacamos los codillos de cerdo preasados de su envase y los colocamos en una fuente apta para hornear. 
 Los jugos o gelatinas que suele traer el envase los dejamos también en la parte baja de la fuente. En un cuenco ponemos la mostaza y añadimos la miel, mezclando bien.
@@ -47,7 +47,7 @@ con la salsa y los jugos que vayan soltando para que la parte exterior tome más
 "media", 30, "estandar", "https://i.blogs.es/c76257/codillo-miel-y-mostaza-pure-pakus-futurobloguero-dap/1366_2000.jpg");
 
 insert into recipes value(null, current_time(), current_time(), 
-"Alitas de pollo fritas al estilo coreano: una receta picante y dulce para chuparse los dedos",
+"Alitas de pollo fritas al estilo coreano",
 
 "En esta receta vamos a pasar las alitas por una doble fritura. En una olla profunda calienta aceite vegetal abundante a fuego medio-alto, hasta alcanzar los 135º C. 
 Prepara una bandeja con papel de cocina y, mientras se calienta el aceite, combina en un bol grande una cucharada de sal, media de pimienta, media de bicarbonato sódico 
@@ -66,13 +66,13 @@ que esté cubierta de manera uniforme. Agregue cacahuetes, semillas de sésamo y
 "media", 90, "estandar" ,"https://i.blogs.es/0cb42b/alitas_picantes.jpg/1366_2000.jpg");
 
 insert into recipes value(null, current_time(), current_time(), 
-"Champiñones rellenos de almogrote, receta para un picoteo del finde con aires canarios",
+"Champiñones rellenos de almogrote",
 
 "Pelamos y picamos la cebolla. Calentamos un poco de aceite en una sartén y la pochamos durante unos minutos, hasta que esté transparente. Mientras tanto separamos los pies de los sombreros de los champiñones y picamos los primeros.
 Cuando la cebolla esté tierna los añadimos a la sartén y rehogamos unos minutos. Agregamos el almogrote y una cucharada de pan rallado. Sofreímos hasta que el pan haya absorbido el aceite y no queden restos de grasa en la sartén.
 Rellenamos los champiñones y los pasamos por harina, huevo batido y pan rallado. Calentamos abundante aceite en un cacito y freímos los champiñones rellenos a fuego alto hasta que estén dorados. Escurrimos bien y servimos inmediatamente.",
 
-"facil", 40, "vegetariano" ,"https://i.blogs.es/fadf21/champinones-rellenos-de-almogrote/1366_2000.jpg");
+"fácil", 40, "vegetariana" ,"https://i.blogs.es/fadf21/champinones-rellenos-de-almogrote/1366_2000.jpg");
 
 
 insert into ingredient_recipe value(null, current_time(),current_time(), 1, 1, "2");

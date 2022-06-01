@@ -1,4 +1,4 @@
-insert into users value(null, "Admin", "user", "admin@admin.com", null, "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", null, current_time(), current_time() );
+insert into users value(null, "Admin", "admin   ", "admin@admin.com", null, "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", null, current_time(), current_time() );
 
 insert into users value(null, "User", "user", "user@user.com", null, "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", null, current_time(), current_time() );
 

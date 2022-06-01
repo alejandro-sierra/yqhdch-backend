@@ -25,7 +25,7 @@ class RecipeController extends Controller
             foreach ($query as $recipe) {
                 foreach ($recipe->ingredients as $ingredient) {
                     $arrayIngredient[] = $ingredient->name . " " . $ingredient->pivot->quantity;
-                    // $arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
+                    //$arrayIngredient[$ingredient->name] = $ingredient->pivot->quantity;
                 }
                 $response[] = [
                     "id" => $recipe->id,
