@@ -16,7 +16,7 @@ class RecipeController extends Controller
     public function recipe($number, $time, $difficulty, $diet)
     {
         // FIXME: cambiar cuando tenga más recetas <= de preparation_time por un =
-        $query = Recipe::inRandomOrder()->where("preparation_time", "<=", $time)
+        $query = Recipe::inRandomOrder()->where("preparation_time", "=", $time)
             ->where("difficulty", "=", $difficulty)->where("diet", "=", $diet)->limit($number)->get();
 
         $arrayIngredient = [];
