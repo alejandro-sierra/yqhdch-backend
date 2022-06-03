@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function block(Request $request)
+    public function status(Request $request)
     {
         $request->validate([
             'recipe_id' => 'required|integer',
@@ -21,9 +22,18 @@ class UserController extends Controller
 
         if (!$user || !$recipe) {
             return response()->json(['error' => 'Receta o usuario no encontrada'], 404);
-        }
-        $user->recipes()->attach($recipe, ['status' => $request->status]);
-        return response()->json(['message' => 'La receta ' . $recipe->title . ' se a ha añadido a ' . $request->status. ' por el usuario ' .$user->name], 200);
+        } else {
+            $user_recipe = $user->recipes()->where('recipe_id', $request->recipe_id)->where('status', $request->status)->exists();
 
+            if ($user_recipe) {
+                $user->recipes()->detach($recipe, ['status' => $request->status]);
+                return response()->json(['message' => 'La receta se a ha quitado de ' . $request->status], 200);
+            }
+            
+            $user->recipes()->attach($recipe, ['status' => $request->status]);
+            return response()->json(['message' => 'La receta se a ha añadido a ' . $request->status], 200);
+        }
     }
 }
+
+// $user_recipe = $user->recipes()->get();

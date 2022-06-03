@@ -21,7 +21,7 @@ const GET_DIFFICULTY = BASE_ROUTE_RECIPE . "/difficulties";
 
 // [ RECIPES ]
 const BASE_ROUTE_USERS = "/users";
-const BLOCK_RECIPE = BASE_ROUTE_USERS . "/block";
+const BLOCK_RECIPE = BASE_ROUTE_USERS . "/status";
 
 
 // *** PUBLIC ROUTES ***
@@ -50,5 +50,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/me', [AuthController::class, 'me'])->name('me');
     
     // [ USERS ]
-    Route::post(BLOCK_RECIPE , [UserController::class, 'block'])->name('block');
+    Route::post(BLOCK_RECIPE , [UserController::class, 'status'])->name('status');
 });
