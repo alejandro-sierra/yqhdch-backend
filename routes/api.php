@@ -22,6 +22,8 @@ const GET_DIFFICULTY = BASE_ROUTE_RECIPE . "/difficulties";
 // [ RECIPES ]
 const BASE_ROUTE_USERS = "/users";
 const BLOCK_RECIPE = BASE_ROUTE_USERS . "/status";
+const STATUS_BLOCK = BASE_ROUTE_USERS . "/status/block";
+const STATUS_FAVORITE = BASE_ROUTE_USERS . "/status/favorites";
 
 
 // *** PUBLIC ROUTES ***
@@ -50,5 +52,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/me', [AuthController::class, 'me'])->name('me');
     
     // [ USERS ]
+    Route::get(STATUS_BLOCK , [UserController::class, 'statusBlock'])->name('statusBlock');
+    Route::get(STATUS_FAVORITE , [UserController::class, 'statusFavorite'])->name('statusFavorite');
     Route::post(BLOCK_RECIPE , [UserController::class, 'status'])->name('status');
 });

@@ -29,9 +29,33 @@ class UserController extends Controller
                 $user->recipes()->detach($recipe, ['status' => $request->status]);
                 return response()->json(['message' => 'La receta se a ha quitado de ' . $request->status], 200);
             }
-            
+
             $user->recipes()->attach($recipe, ['status' => $request->status]);
             return response()->json(['message' => 'La receta se a ha añadido a ' . $request->status], 200);
+        }
+    }
+
+    public function statusBlock(Request $request)
+    {
+        $user = User::find($request->user()->id);
+
+        if (!$user) {
+            return response()->json(['error' => 'Receta o usuario no encontrada'], 404);
+        } else {
+            $user_recipe = $user->recipes()->where('status', 'bloqueados')->get();
+            return response($user_recipe, 200);
+        }
+    }
+
+    public function statusFavorite(Request $request)
+    {
+        $user = User::find($request->user()->id);
+
+        if (!$user) {
+            return response()->json(['error' => 'Receta o usuario no encontrada'], 404);
+        } else {
+            $user_recipe = $user->recipes()->where('status', 'favoritas')->get();
+            return response($user_recipe, 200);
         }
     }
 }
