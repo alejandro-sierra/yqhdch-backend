@@ -14,6 +14,7 @@ const GET_RECIPE_RANDOM = "/recipe/{number?}/{time?}/{difficulty?}/{diet?}";
 const CREATE_RECIPE = BASE_ROUTE_RECIPE . "/create";
 const DELETE_RECIPE = BASE_ROUTE_RECIPE . "/delete/{id?}";
 const GETBYID_RECIPE = BASE_ROUTE_RECIPE . "/{id?}";
+const RANDOM = "/random";
 
 const GET_PREPARATION_TIMES = BASE_ROUTE_RECIPE . "/times";
 const GET_DIET = BASE_ROUTE_RECIPE . "/diets";
@@ -33,6 +34,7 @@ Route::get(GET_PREPARATION_TIMES, [RecipeController::class, 'getPreparationTimes
 Route::get(GET_DIET, [RecipeController::class, 'getDiets'])->name('getDiets');
 Route::get(GET_DIFFICULTY, [RecipeController::class, 'getDifficulties'])->name('getDifficulties');
 Route::get(GETBYID_RECIPE, [RecipeController::class, 'getById'])->name('getById');
+Route::get(RANDOM, [RecipeController::class, 'random'])->name('random');
 Route::post(CREATE_RECIPE, [RecipeController::class, 'create'])->name('create');
 
 

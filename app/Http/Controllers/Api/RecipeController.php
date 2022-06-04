@@ -160,6 +160,11 @@ class RecipeController extends Controller
         ];
         return response($response, 200);
     }
+
+    public function random()
+    {
+        return Recipe::inRandomOrder()->limit(1)->get();
+    }
 }
 // [
 //     {
