@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// *** CONSTANTS ***
 // [ RECIPES ]
 const BASE_ROUTE_RECIPE = "/recipes";
 
@@ -20,14 +21,16 @@ const GET_PREPARATION_TIMES = BASE_ROUTE_RECIPE . "/times";
 const GET_DIET = BASE_ROUTE_RECIPE . "/diets";
 const GET_DIFFICULTY = BASE_ROUTE_RECIPE . "/difficulties";
 
-// [ RECIPES ]
+// [ USERS ]
 const BASE_ROUTE_USERS = "/users";
 const BLOCK_RECIPE = BASE_ROUTE_USERS . "/status";
 const STATUS_BLOCK = BASE_ROUTE_USERS . "/status/block";
 const STATUS_FAVORITE = BASE_ROUTE_USERS . "/status/favorites";
 
 
+
 // *** PUBLIC ROUTES ***
+// [ RECIPES ]
 Route::get(GET_RECIPE_RANDOM, [RecipeController::class, 'recipe'])->name('recipe');
 Route::get(GETALL_RECIPES, [RecipeController::class, 'recipes'])->name('recipes');
 Route::get(GET_PREPARATION_TIMES, [RecipeController::class, 'getPreparationTimes'])->name('getPreparationTimes');
@@ -36,7 +39,6 @@ Route::get(GET_DIFFICULTY, [RecipeController::class, 'getDifficulties'])->name('
 Route::get(GETBYID_RECIPE, [RecipeController::class, 'getById'])->name('getById');
 Route::get(RANDOM, [RecipeController::class, 'random'])->name('random');
 Route::post(CREATE_RECIPE, [RecipeController::class, 'create'])->name('create');
-
 
 // [ AUTH ]
 Route::post('/register', [AuthController::class, 'register'])->name('register');
