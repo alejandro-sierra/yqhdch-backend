@@ -98,7 +98,7 @@ class RecipeController extends Controller
     {
         $arrayTimes = [];
 
-        $times = Recipe::distinct()->get(['preparation_time']);
+        $times = Recipe::orderBy('preparation_time', 'ASC')->distinct()->get(['preparation_time']);
         foreach ($times as $time) {
             $arrayTimes[] = $time->preparation_time;
         }
